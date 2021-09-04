@@ -6,7 +6,7 @@
 
 import Foundation
 
-extension Data {
+public extension Data {
   /// Creates an instance of `Data` from a Base32 encoded `String`.
   init?(base32Encoded string: String) {
     /// The buffer of the decoding – temporarely stores the processed bits.
