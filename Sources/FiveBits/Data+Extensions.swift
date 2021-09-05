@@ -8,7 +8,7 @@ import Foundation
 
 public extension Data {
   /// Creates an instance of `Data` from a Base32 encoded `String`.
-  init?(base32Encoded string: String) {
+  init?(base32Encoded base32String: String) {
     /// The buffer of the decoding – temporarely stores the processed bits.
     /// - Note: This buffer may store more than 1 byte, so we use a `UInt64` for safety.
     var buffer: UInt64 = 0
@@ -20,7 +20,7 @@ public extension Data {
     var bytes: [UInt8] = []
     
     // Padding characters from the string can be removed as they are not necessary for the decoding.
-    for char in string.replacingOccurrences(of: "=", with: "") {
+    for char in base32String.replacingOccurrences(of: "=", with: "") {
       // Make space in the buffer for a new quintet of bits.
       buffer <<= 5
       
