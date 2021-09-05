@@ -39,4 +39,12 @@ final class DataTests: XCTestCase {
       XCTAssertEqual(resultString, expectedResults[index])
     }
   }
+  
+  func testBase32SecretDecoding() throws {
+    let secret = "JBSWY3DPEHPK3PXP"
+    let data = try XCTUnwrap(Data(base32Encoded: secret))
+    let bytes = data.map { $0 }
+    let expectedResults: [UInt8] = [0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x21, 0xDE, 0xAD, 0xBE, 0xEF]
+    XCTAssertEqual(bytes, expectedResults)
+  }
 }
